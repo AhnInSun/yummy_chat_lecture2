@@ -8,7 +8,6 @@ class ChatScreen extends StatefulWidget {
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
-
 }
 
 class _ChatScreenState extends State<ChatScreen> {
@@ -41,7 +40,6 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               onPressed: (){
                 _authentication.signOut();
-                Navigator.pop(context);
               },
               icon: const Icon(
                 Icons.exit_to_app_sharp,
@@ -54,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
         stream: FirebaseFirestore.instance
             .collection('chats/fzawADjo87ks79PgtGs8/message')
             .snapshots(),
-            builder: (BuildContext context,
+        builder: (BuildContext context,
                 AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 if(snapshot.connectionState == ConnectionState.waiting){
                   return const Center(
